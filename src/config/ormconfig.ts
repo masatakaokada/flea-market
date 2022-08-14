@@ -8,7 +8,7 @@ export default new DataSource({
   password: 'postgres',
   database: 'postgres',
   autoLoadEntities: true,
-  entities: ['dist/**/entities/*.entity.js'],
+  entities: ['dist/entities/*.entity.js'],
   migrations: ['dist/migrations/*.js'],
   cli: {
     entitiesDir: 'src/entities',
