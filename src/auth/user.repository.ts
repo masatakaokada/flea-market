@@ -1,11 +1,15 @@
 import { User } from 'src/entities/user.entity';
-import { CustomRepository } from 'src/typeorm-ex.decorator';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
-import * as bcrypt from 'bcrypt'
+import * as bcrypt from 'bcrypt';
+import { Injectable } from '@nestjs/common';
 
-@CustomRepository(User)
+@Injectable()
 export class UserRepository extends Repository<User> {
+  constructor(private dataSource: DataSource) {
+    super(User, dataSource.createEntityManager());
+  }
+
   async createUser(createUserDto: CreateUserDto): Promise<User> {
     const { username, password, status } = createUserDto;
     const salt = await bcrypt.genSalt();
