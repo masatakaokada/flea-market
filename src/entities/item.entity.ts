@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { ItemStatus } from 'src/items/item-status.enum';
+import { ItemStatus } from '../items/item-status.enum';
 import { User } from './user.entity';
 
 @Entity()
