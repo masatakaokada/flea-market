@@ -2,7 +2,7 @@ version: "3.8"
 services:
   api:
     container_name: api
-    command: npm run start:dev
+    command: sh -c 'npm install && npm run start:dev'
     build: .
     ports:
       - 3000:3000
@@ -26,20 +26,5 @@ services:
     restart: always
     user: root
 
-  pgadmin:
-    container_name: pgadmin
-    image: dpage/pgadmin4
-    restart: always
-    ports:
-      - 81:80
-    environment:
-      PGADMIN_DEFAULT_EMAIL: nestjs@example.com
-      PGADMIN_DEFAULT_PASSWORD: password
-    volumes:
-      - pgadmin:/var/lib/pgadmin
-    depends_on:
-      - postgres
-
 volumes:
   postgres:
-  pgadmin:
